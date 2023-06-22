@@ -25,12 +25,11 @@ export default function App() {
   };
 
   const renderTask = ({ item }) => (
-    console.log("taskes...", item),
     <View style={styles.taskContainer}>
-      <View>
-        <Text style={styles.taskText}>{item.text}</Text>
+      <View style={styles.tacheText}>
+        <Text numberOfLines={1} style={styles.taskText}>{item.text }</Text>
       </View>
-      <View style={styles.taskContainer}>
+      <View style={styles.taskContainerBtn}>
         <TouchableOpacity
           style={styles.deleteButton}
           onPress={() => deleteTask(item.id)}
@@ -61,7 +60,7 @@ export default function App() {
         />
         <TouchableOpacity style={styles.addButton} onPress={addTask}>
           <Text style={styles.addButtonText}>Ajouter</Text>
-        </TouchableOpacity>
+        </TouchableOpacity>  
       </View>
       <FlatList
         data={tasks}
@@ -82,7 +81,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   heading: {
-    fontSize: 18,
+    fontSize: 22,
     fontWeight: 'bold',
     marginBottom: 8,
     marginTop: 8,
@@ -90,14 +89,22 @@ const styles = StyleSheet.create({
   },
   taskContainer: {
     alignItems: 'center',
-    display:'flex',
     justifyContent  : 'space-between',
     flexDirection: 'row',
-    marginTop: 10,
+    marginTop: 15,
+  },
+  tacheText: {
+    width: '50%',
   },
   taskText: {
-    fontSize: 20,
+    flex : 1,
+    fontSize: 18,
     fontWeight: 'bold',
+    marginRight: 8,
+    flexWrap: 'wrap',
+  },
+  taskContainerBtn: {
+    flexDirection: 'row',
   },
   deleteButton: {
     paddingVertical: 8,
@@ -108,6 +115,7 @@ const styles = StyleSheet.create({
   deleteButtonText: {
     color: '#FFFFFF',
     fontWeight: 'bold',
+    fontSize: 15,
   },
   completeButton: {
     paddingVertical: 8,
@@ -118,27 +126,31 @@ const styles = StyleSheet.create({
   completeButtonText: {
     color: '#FFFFFF',
     fontWeight: 'bold',
+    fontSize: 15,
   },
   inputContainer: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     marginTop: 8,
     alignItems: 'center',
   },
   input: {
-    flex: 1,
-    marginRight: 8,
     borderWidth: 1,
     padding: 8,
+    marginBottom: 10,
+    width: '100%',
   },
   addButton: {
-    paddingVertical: 8,
+    paddingVertical: 12,
     paddingHorizontal: 12,
     backgroundColor: '#007AFF',
     borderRadius: 4,
+    width: '100%',
   },
   addButtonText: {
     color: '#FFFFFF',
     fontWeight: 'bold',
+    textAlign: 'center',
+    fontSize: 15,
   },
   emptyText: {
     textAlign: 'center',
